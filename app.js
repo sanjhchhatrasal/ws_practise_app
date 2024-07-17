@@ -14,8 +14,9 @@ app.use(express.urlencoded({extended: true}));
 
 io.on("connection", function(socket){
     console.log("Connected to ws");
+    socket.emit("yourId", socket.id)
     socket.on("message", function(data){
-        io.emit("message", data)
+        io.emit("message", {id: socket.id, text: data})
     })
 })
 
