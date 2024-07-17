@@ -14,7 +14,7 @@
 
         .content p {
             background-color: #ECFFE6;
-            padding: 10px;
+            padding: 6px;
             margin-top: 10px;
             width: fit-content;
             border-radius: 10px;
@@ -30,9 +30,11 @@
     <div class="main h-screen w-full bg-slate-300 lg:p-20 px-5 py-10">
        <h1 class="text-4xl font-semibold text-center">Chatting App</h1>
         <div class="bg-slate-400 rounded-xl h-[70%] lg:w-[40%] w-full lg:mt-20 mt-5 lg:ml-96 ml-0 p-5 relative container">
-            <div class="content text-lg font-semibold overflow-y-auto overflow-hidden h-[90%] flex flex-col"></div>    
-            <div class="flex lg-gap-5 gap-1 w-full absolute bottom-2 text-white lg:mt-0" >
-                <input class="bg-slate-600 rounded-xl px-6 py-2 lg-w-[75%] w-[80%] outline-none" type="text" placeholder="Write your message here..." name="data">
+            <div class="content text-lg font-semibold overflow-y-auto overflow-hidden h-[90%] flex flex-col">
+                <div class="time text-lg text-zinc-500"></div>
+            </div>    
+            <div class="flex lg:gap-5 gap-1 w-full absolute bottom-2 text-white lg:mt-0" >
+                <input class="bg-slate-600 rounded-xl px-6 py-2 lg:w-[75%] w-[70%] outline-none" type="text" placeholder="Write your message here..." name="data">
                 <button class="lg:px-5 px-3 py-2 bg-blue-600 font-semibold text-white rounded-xl">Send</button>
             </div>
         </div>
@@ -83,6 +85,11 @@
             if (data.id === socket.id) {
                 newContent.classList.add("self");
             }
+
+            let timeElement = document.querySelector(".time");
+            timeElement.textContent = new Date().toLocaleTimeString();
+            newContent.appendChild(timeElement);
+
 
             content.appendChild(newContent); 
             content.scrollTop = content.scrollHeight;
