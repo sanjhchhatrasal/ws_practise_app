@@ -25,7 +25,8 @@
        let socket = io();
         let inp = document.querySelector("input")
         let btn = document.querySelector("button")
-        let content = document.querySelector(".content")
+        let content = document.querySelector(".content");
+
 
         btn.addEventListener("click", function(evt){
             socket.emit("message", inp.value);
